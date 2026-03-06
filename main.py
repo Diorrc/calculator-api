@@ -29,3 +29,25 @@ def add(a: str, b: str):
         raise HTTPException(status_code=422, detail="Both 'a' and 'b' must be valid numbers" )
 
     return {"result": a + b}
+
+
+@app.get("/subtract/{a}/{b}", status_code=200)
+def subtract(a: str, b: str):
+    """
+    Subtract two numbers together.
+    try: 
+
+    Parameters:
+    - a: First number
+    - b: Second number
+    
+    Returns:
+    - JSON object with the result
+    """
+    try: 
+        a = float(a)
+        b = float(b)
+    except ValueError:
+        raise HTTPException(status_code=422, detail="Both 'a' and 'b' must be valid numbers" )
+
+    return {"result": a - b}
